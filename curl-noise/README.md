@@ -1,6 +1,7 @@
-#Threejs-ES6-Boilerplate
+#Curl-noise
 
 ###Usage
 
 `npm install`
+
 `npm start`
