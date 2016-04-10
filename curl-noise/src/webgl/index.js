@@ -1,14 +1,15 @@
 'use strict';
 
-import Sphere from './meshes/sphere';
 import THREE from 'three';
+
+import ParticleSystem from './meshes/particle-system';
 
 let OrbitControls = require('three-orbit-controls')(THREE)
 
 let WAGNER = require('@superguigui/wagner');
 let NoisePass = require('@superguigui/wagner/src/passes/noise/noise');
 let FXAAPass = require('@superguigui/wagner/src/passes/fxaa/FXAAPass');
-
+let ZBPass = require('@superguigui/wagner/src/passes/zoom-blur/ZoomBlurPass');
 
 class WebGL {
 
@@ -37,7 +38,7 @@ class WebGL {
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 500);
-        this.camera.position.z = 100;
+        this.camera.position.set(0, 0, 15);
         this.camera.lookAt(new THREE.Vector3(0, 0, 0))
 
     }
@@ -58,8 +59,8 @@ class WebGL {
 
     addObjects() {
 
-        this.sphere = new Sphere();
-        this.scene.add(this.sphere.mesh);
+        this.psys = new ParticleSystem();
+        this.scene.add(this.psys.mesh);
 
     }
 
@@ -75,15 +76,16 @@ class WebGL {
 
     createComposePass() {
 
-        this.NoisePass = new NoisePass();
         this.FXAAPass = new FXAAPass();
+        this.ZBPass = new ZBPass({
+            strength: 0.05
+        });
 
     }
 
+    update(el) {
 
-    update(d) {
-
-        this.sphere.update(d);
+        this.psys.update(el);
 
         this.composer.reset();
         this.composer.renderer.clear();
@@ -92,7 +94,7 @@ class WebGL {
         if (this.useComposer) {
 
             this.composer.pass(this.FXAAPass);
-            this.composer.pass(this.NoisePass);
+            this.composer.pass(this.ZBPass);
 
         }
 

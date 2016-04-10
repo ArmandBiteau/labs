@@ -15,12 +15,6 @@ class Manager {
         this.gui = null;
         this.clock = new THREE.Clock();
         this.DEBUG = true;
-        this.SIZE = {
-            w: window.innerWidth,
-            w2: window.innerWidth / 2,
-            h: window.innerHeight,
-            h2: window.innerHeight / 2
-        };
 
         this.bind();
 
@@ -45,7 +39,7 @@ class Manager {
     addEventListener() {
 
         window.addEventListener('resize', this.onResize);
-        window.addEventListener('keyup', this.onKeyUp);
+        // window.addEventListener('keyup', this.onKeyUp);
 
     }
 
@@ -64,13 +58,9 @@ class Manager {
     }
 
     startGUI() {
+
         this.gui = new dat.GUI()
         this.gui.domElement.style.display = this.DEBUG ? 'block' : 'none';
-
-        let cameraFolder = this.gui.addFolder('Camera');
-        cameraFolder.add(this.WebGL.camera.position, 'x', -10, 10);
-        cameraFolder.add(this.WebGL.camera.position, 'y', -10, 10);
-        cameraFolder.add(this.WebGL.camera.position, 'z', 50, 150);
 
         let composerFolder = this.gui.addFolder('PostProcessing');
         composerFolder.add(this.WebGL, 'useComposer');
@@ -91,7 +81,7 @@ class Manager {
         let el = this.clock.getElapsedTime() * .05;
         let d = this.clock.getDelta();
 
-        this.WebGL.update(d);
+        this.WebGL.update(el);
 
         this.stats.end()
 
@@ -111,13 +101,6 @@ class Manager {
     }
 
     onResize() {
-
-        this.SIZE = {
-            w: window.innerWidth,
-            w2: window.innerWidth / 2,
-            h: window.innerHeight,
-            h2: window.innerHeight / 2
-        };
 
         this.WebGL.onResize();
 

@@ -6,6 +6,8 @@ import Manager from './Manager';
 
 domready(() => {
 
+    console.log('Curl-noise by @Armand_Biteau');
+
     const experiment = new Manager();
 
 });
