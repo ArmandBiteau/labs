@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "budo --dir build/ src/index.js:js/bundle.js -v --live -- -t babelify -t glslify | garnish",
-    "build": "browserify -t babelify -t glslify src/index.js | uglifyjs -cm > build/js/bundle.js"
+    "build": "browserify -t babelify -t glslify src/index.js | uglifyjs -cm > build/js/bundle.js",
+    "deploy": "gh-pages --help"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "browserify": "^11.1.0",
     "budo": "^4.1.0",
     "garnish": "^2.1.3",
+    "gh-pages": "^0.11.0",
     "glsl-curl-noise": "0.0.4",
     "glsl-noise": "0.0.0",
     "glslify": "^3.1.0",
