@@ -6,7 +6,7 @@
   "scripts": {
     "start": "budo --dir build/ src/index.js:js/bundle.js -v --live -- -t babelify -t glslify | garnish",
     "build": "browserify -t babelify -t glslify src/index.js | uglifyjs -cm > build/js/bundle.js",
-    "deploy": "gh-pages --help"
+    "deploy": "gh-pages -d build -r https://github.com/ArmandBiteau/labs/tree/gh-pages/curl-noise"
   },
   "repository": {
     "type": "git",
