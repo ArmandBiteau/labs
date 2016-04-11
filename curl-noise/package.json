@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "budo --dir build/ src/index.js:js/bundle.js -v --live -- -t babelify -t glslify | garnish",
-    "build": "browserify -t babelify -t glslify src/index.js | uglifyjs -cm > build/js/bundle.js",
-    "deploy": "gh-pages -d build -r https://github.com/ArmandBiteau/labs/tree/gh-pages/curl-noise"
+    "build": "browserify -t babelify -t glslify src/index.js | uglifyjs -cm > build/js/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +17,11 @@
     "@superguigui/wagner": "^0.1.21",
     "dat-gui": "^0.5.0",
     "domready": "^1.0.8",
-    "gsap": "^1.17.0",
-    "raf": "^3.0.0",
+    "gsap": "^1.18.2",
+    "raf": "^3.2.0",
     "stats-js": "^1.0.0-alpha1",
-    "three": "^0.73.0",
-    "three-orbit-controls": "^71.0.0"
+    "three": "^0.73.2",
+    "three-orbit-controls": "^71.2.0"
   },
   "devDependencies": {
     "babelify": "^6.3.0",
