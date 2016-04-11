@@ -2,7 +2,7 @@
 
 import THREE from 'three';
 
-let glslify = require('glslify')
+var glslify = require('glslify')
 
 class ParticleSystem {
 
