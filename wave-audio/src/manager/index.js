@@ -24,8 +24,8 @@ class Manager {
 
             this.startWebGL();
 
-            this.startStats();
-            this.startGUI();
+            // this.startStats();
+            // this.startGUI();
 
             this.addEventListener();
 
@@ -85,14 +85,14 @@ class Manager {
 
     update() {
 
-        this.stats.begin();
+        // this.stats.begin();
 
         let el = this.clock.getElapsedTime() * .05;
         let d = this.clock.getDelta();
 
         this.WebGL.update(el);
 
-        this.stats.end()
+        // this.stats.end()
 
         raf(this.update);
 

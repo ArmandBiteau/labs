@@ -26,7 +26,7 @@ class WebGL {
         this.createScene();
         this.createRenderer(w, h);
 
-        // this.createControls();
+        this.createControls();
 
         this.addLights();
 
