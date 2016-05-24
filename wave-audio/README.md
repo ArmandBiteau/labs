@@ -1,4 +1,4 @@
-#Graphulus
+#Wave-Audio
 
 ###Usage
 
