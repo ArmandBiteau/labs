@@ -13,6 +13,8 @@ let OrbitControls = require('three-orbit-controls')(THREE)
 let WAGNER = require('@superguigui/wagner');
 let FXAAPass = require('@superguigui/wagner/src/passes/fxaa/FXAAPass');
 let TiltPass = require('@superguigui/wagner/src/passes/tiltshift/tiltshiftPass');
+let VignettePass = require('@superguigui/wagner/src/passes/vignette/vignettePass');
+
 
 class WebGL {
 
@@ -104,6 +106,8 @@ class WebGL {
         this.TiltPass.params.bluramount = 3.0;
     	this.TiltPass.params.center = 0.9;
 
+        this.VignettePass = new VignettePass({boost: 1.4, reduction: 1.2});
+
     }
 
     update(el) {
@@ -121,7 +125,8 @@ class WebGL {
         if (this.useComposer) {
 
             this.composer.pass(this.FXAAPass);
-            this.composer.pass(this.TiltPass);
+            // this.composer.pass(this.TiltPass);
+            this.composer.pass(this.VignettePass);
 
         }
 

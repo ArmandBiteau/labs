@@ -12,8 +12,7 @@ class Ground {
         this.geom = new THREE.PlaneGeometry(3000, 3000, 10, 10);
 
         this.mat = new THREE.MeshBasicMaterial({
-            color: new THREE.Color(0x2D2463),
-            side: 2
+            color: new THREE.Color(0x2D2463)
         });
 
         this.mesh = new THREE.Mesh(this.geom, this.mat);

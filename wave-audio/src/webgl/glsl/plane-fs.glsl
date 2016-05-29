@@ -10,6 +10,8 @@ uniform vec3 fogColor;
 
 uniform vec3 lightPosition;
 
+uniform float time;
+
 // chunk(shadowmap_pars_fragment);
 
 void main(void) {
@@ -26,6 +28,9 @@ void main(void) {
     vec4 color = vec4((ratioDarkColor+ratioLightColor)*0.5, 1.0);
 
     color.a = (630.0 - abs(vPosition.y - 80.0))/100.0;
+
+    color.a *= min(1.0, time*7.5);
+
     gl_FragColor = color;
 
 }
