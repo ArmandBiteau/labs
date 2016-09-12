@@ -20,7 +20,7 @@ class Manager {
 
         this.bind();
 
-        GLSound.init('NosajThing-CoatOfArms.mp3').then(() => {
+        GLSound.init('JerryFolk-Take-Three-128.mp3').then(() => {
 
             this.startWebGL();
 
